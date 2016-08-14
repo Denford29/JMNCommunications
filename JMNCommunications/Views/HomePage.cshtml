@@ -1,4 +1,8 @@
-﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage
+﻿@inherits UmbracoTemplatePage
 @{
 	Layout = "SiteMaster.cshtml";
+    
+    @Html.Partial("Master/PageContent")
+    
+    @Html.Partial("Home/ServicesList")
 }

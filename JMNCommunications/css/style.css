@@ -71,7 +71,7 @@ h6 {
 }
 
 h1, h2 {
-    margin-bottom: 20px;
+    margin-bottom: 15px;
 }
 
 h3, h4, h5, h6 {
@@ -93,6 +93,21 @@ p, span {
 em {
     font-family: 'Lato', sans-serif;
     font-weight: 400;
+}
+
+h2.pageHeading {
+    overflow: hidden;
+}
+
+h2.pageHeading span.headingText {
+    vertical-align: middle;
+}
+
+.text-danger.field-validation-error {
+    color: #cb2027;
+    background: #fff none repeat scroll 0 0;
+    border: 2px solid #ddd;
+    padding: 6px 12px;
 }
 
 /*******space margins***/
@@ -196,6 +211,9 @@ em {
     background-size: cover;
     background-position: center center;
 }
+.segment.contactArea {
+    padding: 30px 0 0 0;
+}
 
 /*************navigation header css******/
 .navbar-inverse .navbar-brand {
@@ -247,13 +265,13 @@ em {
         -ms-opacity: 1;
         opacity: 1;
         -webkit-box-shadow: 0 1px 5px #646464;
-        -webkit-box-shadow: 0px 1px 5px rgba(100, 100, 100, 0.3);
-        -moz-box-shadow: 0px 1px 5px #646464;
-        -moz-box-shadow: 0px 1px 5px rgba(100, 100, 100, 0.3);
-        -ms-box-shadow: 0px 1px 5px #646464;
-        -ms-box-shadow: 0px 1px 5px rgba(100, 100, 100, 0.3);
-        box-shadow: 0px 1px 5px #646464;
-        box-shadow: 0px 1px 5px rgba(100, 100, 100, 0.3);
+        -webkit-box-shadow: 0 1px 5px rgba(100, 100, 100, 0.3);
+        -moz-box-shadow: 0 1px 5px #646464;
+        -moz-box-shadow: 0 1px 5px rgba(100, 100, 100, 0.3);
+        -ms-box-shadow: 0 1px 5px #646464;
+        -ms-box-shadow: 0 1px 5px rgba(100, 100, 100, 0.3);
+        box-shadow: 0 1px 5px #646464;
+        box-shadow: 0 1px 5px rgba(100, 100, 100, 0.3);
     }
 }
 
@@ -300,17 +318,22 @@ em {
 .navbar .dropdown-menu {
     padding: 0;
     margin: 0;
+    -moz-min-width: 190px;
+    -ms-min-width: 190px;
+    -o-min-width: 190px;
+    -webkit-min-width: 190px;
     min-width: 190px;
     background-color: #fff;
+    -ms-border-radius: 0;
     border-radius: 0;
     -webkit-border-radius: 0;
-    -webkit-box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1);
-    -moz-box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1);
-    -ms-box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1);
-    box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1);
+    -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    -moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    -ms-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 }
 
-    .navbar .dropdown-menu li a {
+.navbar .dropdown-menu li a {
         color: #333;
         padding: 12px 20px;
         border-bottom: 1px solid #ddd;
@@ -338,9 +361,6 @@ em {
         left: 100%;
         margin-top: -1px;
         margin-left: -1px;
-        /*    -webkit-border-radius:0 6px 6px 6px;
-        -moz-border-radius:0 6px 6px 6px;
-        border-radius:0 6px 6px 6px;*/
     }
 
     .dropdown-submenu:hover > .dropdown-menu {
@@ -377,15 +397,11 @@ em {
 /*banner*/
 #banner {
     background-color: #444;
-    background-position: center 0%;
     background-size: cover;
     background-repeat: no-repeat;
     background-attachment: fixed;
-    background-image: url(../images/fibre-optic-cables.jpg);
     display: table;
     width: 100%;
-    height: 100%;
-    min-height: 100%;
     overflow-x: hidden;
     overflow-y: hidden;
     vertical-align: middle;
@@ -957,7 +973,7 @@ em {
 .contct-info {
     background: url('../images/network-cables.jpg') no-repeat center center fixed;
     width: 100%;
-    padding: 80px 0;
+    padding: 40px 0;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;

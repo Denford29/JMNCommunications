@@ -587,6 +587,8 @@
     <Content Include="fonts\css\font-awesome.min.css" />
     <Content Include="fonts\fonts\fontawesome-webfont.svg" />
     <Content Include="fonts\HELP-US-OUT.txt" />
+    <Content Include="Images\cabling-networking.jpg" />
+    <Content Include="Images\fibre-optic-network.jpg" />
     <Content Include="Index.html" />
     <Content Include="Images\copper_and_fibre_optic.jpg" />
     <Content Include="Images\fibre-optic-cables.jpg" />
@@ -638,6 +640,20 @@
     <Content Include="js\jquery.stellar.min.js" />
     <Content Include="js\owl.carousel.min.js" />
     <Content Include="js\wow.min.js" />
+    <Content Include="Media\1001\jmn-communications-logo.png" />
+    <Content Include="Media\1001\jmn-communications-logo_thumb.jpg" />
+    <Content Include="Media\1001\jmn-communications-logo_thumb.png" />
+    <Content Include="Media\1002\cabling-networking.jpg" />
+    <Content Include="Media\1002\cabling-networking_big-thumb.jpg" />
+    <Content Include="Media\1002\cabling-networking_thumb.jpg" />
+    <Content Include="Media\1003\fibre-optic-cables.jpg" />
+    <Content Include="Media\1003\fibre-optic-cables_big-thumb.jpg" />
+    <Content Include="Media\1003\fibre-optic-cables_thumb.jpg" />
+    <Content Include="Media\1004\fibre-optic-network.jpg" />
+    <Content Include="Media\1004\fibre-optic-network_big-thumb.jpg" />
+    <Content Include="Media\1004\fibre-optic-network_thumb.jpg" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Umbraco_Client\App_Plugins\ModelsBuilder\package.manifest" />
     <Content Include="bin\amd64\Microsoft.VC90.CRT\Microsoft.VC90.CRT.manifest" />
     <Content Include="bin\x86\Microsoft.VC90.CRT\Microsoft.VC90.CRT.manifest" />
@@ -857,10 +873,20 @@
     <Content Include="bin\Optimus.dll.config" />
     <Content Include="Views\Partials\Master\HeaderContent.cshtml" />
     <Content Include="Views\Partials\Master\MainNavigation.cshtml" />
+    <Content Include="Views\Partials\Master\PageContent.cshtml" />
+    <Content Include="Views\Partials\Master\PageHeading.cshtml" />
+    <Content Include="Views\Partials\Home\ServicesList.cshtml" />
+    <Content Include="Views\Partials\Contact\Information.cshtml" />
+    <Content Include="Views\Partials\Master\SiteFooter.cshtml" />
+    <Content Include="Views\Partials\Contact\Form.cshtml" />
+    <Content Include="Views\ProjectPage.cshtml" />
+    <Content Include="Views\ProjectsLanding.cshtml" />
     <Content Include="Views\ServicePage.cshtml">
       <SubType>Code</SubType>
     </Content>
     <Content Include="Views\ServicesLanding.cshtml" />
+    <Content Include="Views\Partials\Master\PageMainArea.cshtml" />
+    <Content Include="Views\Partials\Master\PageSideArea.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -3419,11 +3445,12 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controllers\ContactSurfaceController.cs" />
+    <Compile Include="Models\ContactModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Media\" />
     <Folder Include="Views\MacroPartials\" />
   </ItemGroup>
   <PropertyGroup>

@@ -1,0 +1,34 @@
+﻿@inherits UmbracoTemplatePage
+@{
+    var contentHeading = Model.Content.Name;
+    if (Model.Content.HasProperty("pageHeading") && Model.Content.HasValue("pageHeading"))
+    {
+    contentHeading = Model.Content.GetPropertyValue<string>("pageHeading");
+    }
+    <section id="intro-text" class="segment intro-wrap">
+             <div class="container">
+                 <div class="row">
+                     <div class="col-md-12 text-center">
+                         <h2 class="wow animated fadeInDown pageHeading">
+                             <span class="headingText">
+                                 @contentHeading
+                            </span>
+                             
+                             @if (Model.Content.HasProperty("pageIcon") && Model.Content.HasValue("pageIcon"))
+                             {
+                                 var pageIcon = Model.Content.GetPropertyValue<string>("pageIcon");
+                                 <i class="fa fa-@pageIcon fa-pull-right fa-2x"></i>
+                             }
+                         </h2>
+                         @if (Model.Content.HasProperty("bodyText") && Model.Content.HasValue("bodyText"))
+                         {
+                             <div class="wow animated fadeInDown">
+                                 @Html.Raw(Model.Content.GetPropertyValue<string>("bodyText"))
+                             </div>
+                         }
+                     </div>
+                 </div>
+             </div>
+         </section>
+     }
+}

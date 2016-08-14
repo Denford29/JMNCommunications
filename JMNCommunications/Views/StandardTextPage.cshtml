@@ -1,4 +1,17 @@
 ﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage
 @{
-	Layout = "SiteMaster.cshtml";
+    Layout = "SiteMaster.cshtml";
+
+    <section class="inner-page-content">
+        <div class="container">
+            <div class="row">
+                
+                @Html.Partial("Master/PageMainArea")
+
+                @Html.Partial("Master/PageSideArea")
+
+            </div>
+        </div>
+    </section>
+
 }

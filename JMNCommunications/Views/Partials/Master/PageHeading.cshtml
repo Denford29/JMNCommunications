@@ -1,0 +1,67 @@
+﻿@inherits UmbracoTemplatePage
+@{
+    var headerImage = "/images/fibre-optic-cables.jpg";
+    if (Model.Content.HasProperty("headingImage") && Model.Content.HasValue("headingImage"))
+        {
+        var mediaItem = Umbraco.TypedMedia(Model.Content.GetPropertyValue("headingImage").ToString());
+        if (mediaItem != null && mediaItem.Id > 0)
+            {
+            headerImage = !string.IsNullOrEmpty(mediaItem.GetCropUrl("HeaderImage")) ? mediaItem.GetCropUrl("HeaderImage") : mediaItem.GetCropUrl(1300, 400);
+            }
+        }
+
+    var backgroundPosition = "center 0";
+    var height = "100%";
+    if (Model.Content.ContentType.Alias != "HomePage")
+        {
+        backgroundPosition = "50% 0";
+        height = "75%";
+        }
+
+        <section id="banner"
+                 class="banner-wrap parallax"
+                 data-stellar-background-ratio="0.5"
+                 style="background-image: url(@headerImage); background-position:@backgroundPosition; height: @height;">
+
+            <div class="home-content">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12 text-center">
+                            @if (Model.Content.HasProperty("headerImageText") && Model.Content.HasValue("headerImageText"))
+                                {
+                                var headerTextList = Model.Content.GetPropertyValue<string[]>("headerImageText");
+                                if (headerTextList.Any())
+                                    {
+                                    <div class="main-flex-slider">
+                                        <ul class="slides">
+                                            @foreach (var headerText in headerTextList)
+                                                {
+                                                if (headerText != null)
+                                                    {
+                                                    var lastOrDefault = headerText.Trim().Split(' ').LastOrDefault();
+                                                    if (lastOrDefault != null)
+                                                        {
+                                                        string lastWord = lastOrDefault.Trim();
+                                                        List<string> wordsToRemove = new List<string> { lastWord };
+                                                        var whiteText = string.Join(" ", headerText.Split(' ').Except(wordsToRemove));
+                                                        <li>
+                                                            <h1>
+                                                                @whiteText
+                                                                <span class="colored-text">@lastWord</span>
+                                                            </h1>
+                                                        </li>
+                                                        }
+                                                    }
+                                                }
+                                        </ul>
+                                    </div>
+                                    }
+                                }
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+
+}

@@ -1,0 +1,63 @@
+﻿@inherits UmbracoTemplatePage
+@{
+    var siteDefaultName = "JMN Communications ";
+    var siteSetting = Umbraco.TypedContentAtRoot().FirstOrDefault(x => x.ContentType.Alias == "GlobalSettings");
+    if (siteSetting != null && siteSetting.Id > 0 && siteSetting.Descendants("SiteDetails").Any())
+        {
+        var siteDetailsPage = siteSetting.Descendants("SiteDetails").FirstOrDefault();
+        if (siteDetailsPage != null && siteDetailsPage.Id > 0)
+            {
+            if (siteDetailsPage.HasProperty("siteName") && siteDetailsPage.HasValue("siteName"))
+                {
+                siteDefaultName = siteDetailsPage.GetPropertyValue("siteName").ToString();
+                }
+
+            <footer id="footer-bottom">
+                <div class="footer-nav">
+                    <div class="container">
+                        @if (siteDetailsPage.HasProperty("footerLinks") && siteDetailsPage.HasValue("footerLinks"))
+                            {
+                            var footerLinks = siteDetailsPage.GetPropertyValue<string>("footerLinks").Split(',');
+                            if (footerLinks.Any())
+                                {
+                                <ul class="list-inline f-menu-items">
+                                    @foreach (var linkId in footerLinks)
+                                        {
+                                        var linkPage = Umbraco.TypedContent(linkId);
+                                        if (linkPage != null && linkPage.Id > 0)
+                                            {
+                                            var linkPageTitle = linkPage.Name;
+                                            if (linkPage.HasProperty("linkTittle") && linkPage.HasValue("linkTittle"))
+                                                {
+                                                linkPageTitle = linkPage.GetPropertyValue("linkTittle").ToString();
+                                                }
+                                            <li>
+                                                <a href="@linkPage.Url" tittle="@siteDefaultName - @linkPageTitle">
+                                                    @linkPageTitle
+                                                </a>
+                                            </li>
+                                            }
+                                        }
+                                </ul>
+                                }
+                            }
+                        <div class="footer-privacy-text">
+                            @if (siteDetailsPage.HasProperty("copyrightText") && siteDetailsPage.HasValue("copyrightText"))
+                                {
+                                var copyrightText = siteDetailsPage.GetPropertyValue("copyrightText").ToString();
+                                @copyrightText<text> &copy;</text>
+                                }
+                            @DateTime.UtcNow.Year
+                            <a href="/">@siteDefaultName</a>
+                            @if (siteDetailsPage.HasProperty("footerABNNumber") && siteDetailsPage.HasValue("footerABNNumber"))
+                                {
+                                var footerAbnNumber = siteDetailsPage.GetPropertyValue("footerABNNumber").ToString();
+                                @footerAbnNumber
+                                }
+                        </div>
+                    </div>
+                </div>
+            </footer>
+            }
+        }
+}

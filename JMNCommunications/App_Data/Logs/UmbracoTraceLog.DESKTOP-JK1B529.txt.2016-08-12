@@ -1,0 +1,20 @@
+﻿ 2016-08-12 09:02:20,581 [P10800/D9/T220] INFO  Umbraco.Core.PluginManager - Starting resolution types of Umbraco.Core.PropertyEditors.IParameterEditor
+ 2016-08-12 09:02:20,629 [P10800/D9/T220] INFO  Umbraco.Core.PluginManager - Completed resolution of types of Umbraco.Core.PropertyEditors.IParameterEditor, found 0 (took 48ms)
+ 2016-08-12 09:03:20,255 [P10800/D9/T216] INFO  umbraco.BusinessLogic.Log - Log scrubbed.  Removed all items older than 2016-08-11 09:03:20
+ 2016-08-12 09:03:20,763 [P10800/D9/T239] INFO  umbraco.content - Load Xml from file...
+ 2016-08-12 09:03:20,765 [P10800/D9/T239] INFO  umbraco.content - Loaded Xml from file.
+ 2016-08-12 09:03:20,879 [P10800/D9/T239] INFO  Umbraco.Core.PluginManager - Starting resolution types of Umbraco.Core.Persistence.Mappers.BaseMapper
+ 2016-08-12 09:03:20,941 [P10800/D9/T239] INFO  Umbraco.Core.PluginManager - Completed resolution of types of Umbraco.Core.Persistence.Mappers.BaseMapper, found 0 (took 62ms)
+ 2016-08-12 09:10:45,662 [P10800/D9/T241] INFO  Umbraco.Core.PluginManager - Starting resolution types of Umbraco.Web.Trees.TreeController
+ 2016-08-12 09:10:45,738 [P10800/D9/T241] INFO  Umbraco.Core.PluginManager - Completed resolution of types of Umbraco.Web.Trees.TreeController, found 0 (took 75ms)
+ 2016-08-12 09:10:46,008 [P10800/D9/T243] INFO  Umbraco.Core.PluginManager - Starting resolution types of umbraco.interfaces.ITree
+ 2016-08-12 09:10:46,064 [P10800/D9/T243] INFO  Umbraco.Core.PluginManager - Completed resolution of types of umbraco.interfaces.ITree, found 0 (took 55ms)
+ 2016-08-12 09:10:46,121 [P10800/D9/T243] INFO  Umbraco.Core.PluginManager - Starting resolution types of Umbraco.Web.Trees.TreeController
+ 2016-08-12 09:10:46,121 [P10800/D9/T243] INFO  Umbraco.Core.PluginManager - Completed resolution of types of Umbraco.Web.Trees.TreeController, found 0 (took 0ms)
+ 2016-08-12 09:10:46,127 [P10800/D9/T243] INFO  Umbraco.Core.PluginManager - Starting resolution types of umbraco.interfaces.ITree
+ 2016-08-12 09:10:46,257 [P10800/D9/T243] INFO  Umbraco.Core.PluginManager - Completed resolution of types of umbraco.interfaces.ITree, found 0 (took 129ms)
+ 2016-08-12 09:10:46,339 [P10800/D9/T243] INFO  Umbraco.Core.PluginManager - Starting resolution types of umbraco.interfaces.IApplication
+ 2016-08-12 09:10:46,389 [P10800/D9/T243] INFO  Umbraco.Core.PluginManager - Completed resolution of types of umbraco.interfaces.IApplication, found 0 (took 49ms)
+ 2016-08-12 13:03:20,272 [P10800/D9/T137] INFO  umbraco.BusinessLogic.Log - Log scrubbed.  Removed all items older than 2016-08-11 13:03:20
+ 2016-08-12 17:03:20,284 [P10800/D9/T13] INFO  umbraco.BusinessLogic.Log - Log scrubbed.  Removed all items older than 2016-08-11 17:03:20
+ 2016-08-12 21:03:20,304 [P10800/D9/T301] INFO  umbraco.BusinessLogic.Log - Log scrubbed.  Removed all items older than 2016-08-11 21:03:20

@@ -31,11 +31,11 @@ $(document).ready(function() {
  =============================================== */
 $(window).load(function() {
     $('.main-flex-slider').flexslider({
-        slideshowSpeed: 5000,
+        slideshowSpeed: 2000,
         directionNav: false,
-        animation: "slide",
+        animation: "fade",
         controlNav: false,
-        direction: "vertical"
+        direction: "horizontal"
     });
 });
 

@@ -18,7 +18,7 @@ using Umbraco.Web;
 using Umbraco.ModelsBuilder;
 using Umbraco.ModelsBuilder.Umbraco;
 
-[assembly: PureLiveAssembly, System.Reflection.AssemblyVersion("0.0.0.2")]
+[assembly: PureLiveAssembly, System.Reflection.AssemblyVersion("0.0.0.4")]
 
 namespace Umbraco.Web.PublishedContentModels
 {
@@ -63,6 +63,15 @@ namespace Umbraco.Web.PublishedContentModels
 		public string BrowserTitle
 		{
 			get { return this.GetPropertyValue<string>("browserTitle"); }
+		}
+
+		///<summary>
+		/// Header Image Text: Enter a new line to add a heading used in the image.
+		///</summary>
+		[ImplementPropertyType("headerImageText")]
+		public IEnumerable<string> HeaderImageText
+		{
+			get { return this.GetPropertyValue<IEnumerable<string>>("headerImageText"); }
 		}
 
 		///<summary>
@@ -120,6 +129,15 @@ namespace Umbraco.Web.PublishedContentModels
 		}
 
 		///<summary>
+		/// Page Album Image: Select either a single image or the folder with multiple images for a slider.
+		///</summary>
+		[ImplementPropertyType("pageAlbumImage")]
+		public string PageAlbumImage
+		{
+			get { return this.GetPropertyValue<string>("pageAlbumImage"); }
+		}
+
+		///<summary>
 		/// Page Heading: This is the main heading on each page, will default to page name if not set.
 		///</summary>
 		[ImplementPropertyType("pageHeading")]
@@ -132,9 +150,9 @@ namespace Umbraco.Web.PublishedContentModels
 		/// Page Icon
 		///</summary>
 		[ImplementPropertyType("pageIcon")]
-		public string PageIcon
+		public Newtonsoft.Json.Linq.JToken PageIcon
 		{
-			get { return this.GetPropertyValue<string>("pageIcon"); }
+			get { return this.GetPropertyValue<Newtonsoft.Json.Linq.JToken>("pageIcon"); }
 		}
 
 		///<summary>
@@ -223,15 +241,6 @@ namespace Umbraco.Web.PublishedContentModels
 		public string ContentListItems
 		{
 			get { return this.GetPropertyValue<string>("contentListItems"); }
-		}
-
-		///<summary>
-		/// Page Images Album
-		///</summary>
-		[ImplementPropertyType("pageImagesAlbum")]
-		public string PageImagesAlbum
-		{
-			get { return this.GetPropertyValue<string>("pageImagesAlbum"); }
 		}
 	}
 
@@ -322,6 +331,15 @@ namespace Umbraco.Web.PublishedContentModels
 		}
 
 		///<summary>
+		/// Copyright Text
+		///</summary>
+		[ImplementPropertyType("copyrightText")]
+		public string CopyrightText
+		{
+			get { return this.GetPropertyValue<string>("copyrightText"); }
+		}
+
+		///<summary>
 		/// Default Key Words
 		///</summary>
 		[ImplementPropertyType("defaultKeyWords")]
@@ -349,21 +367,48 @@ namespace Umbraco.Web.PublishedContentModels
 		}
 
 		///<summary>
+		/// Footer ABN Number
+		///</summary>
+		[ImplementPropertyType("footerABNNumber")]
+		public string FooterAbnnumber
+		{
+			get { return this.GetPropertyValue<string>("footerABNNumber"); }
+		}
+
+		///<summary>
+		/// Footer Links
+		///</summary>
+		[ImplementPropertyType("footerLinks")]
+		public string FooterLinks
+		{
+			get { return this.GetPropertyValue<string>("footerLinks"); }
+		}
+
+		///<summary>
 		/// Main Header Logo: Logo image used on the header section.
 		///</summary>
-		[ImplementPropertyType("rightHeaderLogo")]
-		public object RightHeaderLogo
+		[ImplementPropertyType("mainHeaderLogo")]
+		public object MainHeaderLogo
 		{
-			get { return this.GetPropertyValue("rightHeaderLogo"); }
+			get { return this.GetPropertyValue("mainHeaderLogo"); }
 		}
 
 		///<summary>
 		/// Site Address
 		///</summary>
 		[ImplementPropertyType("siteAddress")]
-		public string SiteAddress
+		public IEnumerable<string> SiteAddress
 		{
-			get { return this.GetPropertyValue<string>("siteAddress"); }
+			get { return this.GetPropertyValue<IEnumerable<string>>("siteAddress"); }
+		}
+
+		///<summary>
+		/// Site Contact Email: The email address that will receive contact emails.
+		///</summary>
+		[ImplementPropertyType("siteContactEmail")]
+		public string SiteContactEmail
+		{
+			get { return this.GetPropertyValue<string>("siteContactEmail"); }
 		}
 
 		///<summary>
@@ -385,6 +430,15 @@ namespace Umbraco.Web.PublishedContentModels
 		}
 
 		///<summary>
+		/// Site Opening Times
+		///</summary>
+		[ImplementPropertyType("siteOpeningTimes")]
+		public IEnumerable<string> SiteOpeningTimes
+		{
+			get { return this.GetPropertyValue<IEnumerable<string>>("siteOpeningTimes"); }
+		}
+
+		///<summary>
 		/// Site Phone Number
 		///</summary>
 		[ImplementPropertyType("sitePhoneNumber")]
@@ -394,21 +448,21 @@ namespace Umbraco.Web.PublishedContentModels
 		}
 
 		///<summary>
+		/// Site Phone Numbers
+		///</summary>
+		[ImplementPropertyType("sitePhoneNumbers")]
+		public IEnumerable<string> SitePhoneNumbers
+		{
+			get { return this.GetPropertyValue<IEnumerable<string>>("sitePhoneNumbers"); }
+		}
+
+		///<summary>
 		/// Site Specialties
 		///</summary>
 		[ImplementPropertyType("siteSpecialties")]
 		public string SiteSpecialties
 		{
 			get { return this.GetPropertyValue<string>("siteSpecialties"); }
-		}
-
-		///<summary>
-		/// Twitter Page
-		///</summary>
-		[ImplementPropertyType("twitterPage")]
-		public string TwitterPage
-		{
-			get { return this.GetPropertyValue<string>("twitterPage"); }
 		}
 	}
 
@@ -547,6 +601,58 @@ namespace Umbraco.Web.PublishedContentModels
 #pragma warning restore 0109
 
 		public static PublishedPropertyType GetModelPropertyType<TValue>(Expression<Func<ServicePage, TValue>> selector)
+		{
+			return PublishedContentModelUtility.GetModelPropertyType(GetModelContentType(), selector);
+		}
+	}
+
+	/// <summary>Projects Landing</summary>
+	[PublishedContentModel("projectsLanding")]
+	public partial class ProjectsLanding : SiteMaster
+	{
+#pragma warning disable 0109 // new is redundant
+		public new const string ModelTypeAlias = "projectsLanding";
+		public new const PublishedItemType ModelItemType = PublishedItemType.Content;
+#pragma warning restore 0109
+
+		public ProjectsLanding(IPublishedContent content)
+			: base(content)
+		{ }
+
+#pragma warning disable 0109 // new is redundant
+		public new static PublishedContentType GetModelContentType()
+		{
+			return PublishedContentType.Get(ModelItemType, ModelTypeAlias);
+		}
+#pragma warning restore 0109
+
+		public static PublishedPropertyType GetModelPropertyType<TValue>(Expression<Func<ProjectsLanding, TValue>> selector)
+		{
+			return PublishedContentModelUtility.GetModelPropertyType(GetModelContentType(), selector);
+		}
+	}
+
+	/// <summary>Project Page</summary>
+	[PublishedContentModel("projectPage")]
+	public partial class ProjectPage : SiteMaster
+	{
+#pragma warning disable 0109 // new is redundant
+		public new const string ModelTypeAlias = "projectPage";
+		public new const PublishedItemType ModelItemType = PublishedItemType.Content;
+#pragma warning restore 0109
+
+		public ProjectPage(IPublishedContent content)
+			: base(content)
+		{ }
+
+#pragma warning disable 0109 // new is redundant
+		public new static PublishedContentType GetModelContentType()
+		{
+			return PublishedContentType.Get(ModelItemType, ModelTypeAlias);
+		}
+#pragma warning restore 0109
+
+		public static PublishedPropertyType GetModelPropertyType<TValue>(Expression<Func<ProjectPage, TValue>> selector)
 		{
 			return PublishedContentModelUtility.GetModelPropertyType(GetModelContentType(), selector);
 		}
