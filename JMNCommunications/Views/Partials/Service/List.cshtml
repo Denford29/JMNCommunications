@@ -1,0 +1,49 @@
+﻿@inherits UmbracoTemplatePage
+@{
+
+    var servicesPages = Model.Content.Descendants("servicePage").Where(servicesPage => servicesPage.IsVisible()).ToList();
+    if (servicesPages.Any())
+        {
+        foreach (var servicesPagesRow in servicesPages.InGroupsOf(3))
+            {
+            <div class="row">
+                @foreach (var servicePage in servicesPagesRow)
+                    {
+                    var servicePageTitle = servicePage.Name;
+                    if (servicePage.HasProperty("linkTittle") && servicePage.HasValue("linkTittle"))
+                        {
+                        servicePageTitle = servicePage.GetPropertyValue("linkTittle").ToString();
+                        }
+
+                    var pageIcon = "file-text";
+                    if (servicePage.HasProperty("pageIcon") && servicePage.HasValue("pageIcon"))
+                        {
+                        pageIcon = servicePage.GetPropertyValue("pageIcon").ToString();
+                        }
+
+                    <div class="col-md-4 ">
+                        <div class="service-box wow animated fadeInLeft">
+                            <a href="@servicePage.Url" tittle="@servicePageTitle">
+                                <i class="fa fa-@pageIcon"></i>
+                                <h4>@servicePageTitle</h4>
+                            </a>
+                            @if (servicePage.HasProperty("bodyText") && servicePage.HasValue("bodyText"))
+                                {
+                                var bodyText = servicePage.GetPropertyValue("bodyText").ToString();
+                                var nonHtmlText = Umbraco.StripHtml(bodyText);
+                                var displayText = Umbraco.Truncate(nonHtmlText, 150);
+                                <p>
+                                    @displayText
+                                </p>
+                                }
+                            <a href="@servicePage.Url" tittle="@servicePageTitle" class="btn btn-theme-bg">
+                                @servicePageTitle
+                            </a>
+                        </div>
+                    </div>
+                    }
+            </div>
+            <div class="space-10"></div>
+            }
+        }
+}

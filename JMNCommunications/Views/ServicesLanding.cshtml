@@ -6,12 +6,18 @@
         <div class="container">
             <div class="row">
 
-                @Html.Partial("Master/PageMainArea")
+                <div class="col-md-9 col-sm-12">
+                    @Html.Partial("Master/PageMainArea")
 
-                @Html.Partial("Master/PageSideArea")
+                    @Html.Partial("Service/List")
+                </div>
+
+                <div class="col-sm-3 hidden-sm hidden-xs">
+                    @Html.Partial("Master/PageSideArea")
+                </div>
 
             </div>
         </div>
     </section>
-    
+
 }

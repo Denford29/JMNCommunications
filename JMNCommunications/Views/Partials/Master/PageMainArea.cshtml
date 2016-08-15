@@ -5,81 +5,78 @@
         {
         currentPageHeading = Model.Content.GetPropertyValue("pageHeading").ToString();
         }
-        <div class="col-md-9 col-sm-12">
-            <div class="entry">
-                <h2 class="entry-title">
-                    @currentPageHeading
-                </h2>
+        <div class="entry">
+            <h2 class="entry-title">
+                @currentPageHeading
+            </h2>
 
-                @if (Model.Content.HasProperty("pageAlbumImage") && Model.Content.HasValue("pageAlbumImage"))
+            @if (Model.Content.HasProperty("pageAlbumImage") && Model.Content.HasValue("pageAlbumImage"))
+                {
+                var umbracoImageAlbum = Umbraco.TypedMedia(Model.Content.GetPropertyValue<Int32>("pageAlbumImage"));
+                if (umbracoImageAlbum != null && umbracoImageAlbum.Id > 0)
                     {
-                    var umbracoImageAlbum = Umbraco.TypedMedia(Model.Content.GetPropertyValue<Int32>("pageAlbumImage"));
-                    if (umbracoImageAlbum != null && umbracoImageAlbum.Id > 0)
+                    if (umbracoImageAlbum.ContentType.Alias == "Image")
                         {
-                        if (umbracoImageAlbum.ContentType.Alias == "Image")
+                        var imageSrc = !string.IsNullOrEmpty(umbracoImageAlbum.GetCropUrl("pageHeading")) ? umbracoImageAlbum.GetCropUrl("pageHeading") : umbracoImageAlbum.GetCropUrl(800, 350);
+                        <div class="image-area">
+                            <img alt="@Model.Content.Name - @umbracoImageAlbum.Name" src="@imageSrc">
+                        </div>
+                        }
+                    else if (umbracoImageAlbum.ContentType.Alias == "Folder" && umbracoImageAlbum.Children.Any())
+                        {
+                        var albumImages = umbracoImageAlbum.Children.Where(image => image.ContentType.Alias == "Image").ToList();
+                        if (albumImages.Any())
                             {
-                            var imageSrc = !string.IsNullOrEmpty(umbracoImageAlbum.GetCropUrl("pageHeading")) ? umbracoImageAlbum.GetCropUrl("pageHeading") : umbracoImageAlbum.GetCropUrl(800, 350);
+                            var imageCount = 0;
+                            var linksCount = 0;
                             <div class="image-area">
-                                <img alt="@Model.Content.Name - @umbracoImageAlbum.Name" src="@imageSrc">
-                            </div>
-                            }
-                        else if (umbracoImageAlbum.ContentType.Alias == "Folder" && umbracoImageAlbum.Children.Any())
-                            {
-                            var albumImages = umbracoImageAlbum.Children.Where(image => image.ContentType.Alias == "Image").ToList();
-                            if (albumImages.Any())
-                                {
-                                var imageCount = 0;
-                                var linksCount = 0;
-                                <div class="image-area">
-                                    <div id="pageCarousel" class="carousel slide" data-ride="carousel">
-                                        <ol class="carousel-indicators">
-                                            @foreach (var albumImage in albumImages)
+                                <div id="pageCarousel" class="carousel slide" data-ride="carousel">
+                                    <ol class="carousel-indicators">
+                                        @foreach (var albumImage in albumImages)
+                                            {
+                                            linksCount++;
+                                            var linksClass = "";
+                                            if (linksCount == 1)
                                                 {
-                                                linksCount++;
-                                                var linksClass = "";
-                                                if (linksCount == 1)
-                                                    {
-                                                    linksClass = "active";
-                                                    }
-                                                <li data-target="#pageCarousel" data-slide-to="@linksCount" class="@linksClass"></li>
+                                                linksClass = "active";
                                                 }
-                                        </ol>
-                                        <div class="carousel-inner" role="listbox">
-                                            @foreach (var albumImage in albumImages)
+                                        <li data-target="#pageCarousel" data-slide-to="@linksCount" class="@linksClass"></li>
+                                            }
+                                    </ol>
+                                    <div class="carousel-inner" role="listbox">
+                                        @foreach (var albumImage in albumImages)
+                                            {
+                                            imageCount++;
+                                            var imageClass = "";
+                                            if (imageCount == 1)
                                                 {
-                                                imageCount++;
-                                                var imageClass = "";
-                                                if (imageCount == 1)
-                                                    {
-                                                    imageClass = "active";
-                                                    }
-                                                var imageSrc = !string.IsNullOrEmpty(albumImage.GetCropUrl("pageHeading")) ? albumImage.GetCropUrl("pageHeading") : albumImage.GetCropUrl(800, 350);
-                                                <div class="item @imageClass">
-                                                    <img src="@imageSrc" alt="@Model.Content.Name - @umbracoImageAlbum.Name" class="img-responsive">
-                                                </div>
+                                                imageClass = "active";
                                                 }
+                                            var imageSrc = !string.IsNullOrEmpty(albumImage.GetCropUrl("pageHeading")) ? albumImage.GetCropUrl("pageHeading") : albumImage.GetCropUrl(800, 350);
+                                        <div class="item @imageClass">
+                                            <img src="@imageSrc" alt="@Model.Content.Name - @umbracoImageAlbum.Name" class="img-responsive">
                                         </div>
-                                        <a class="left carousel-control" href="#pageCarousel" role="button" data-slide="prev">
-                                            <span><i class="fa fa-angle-left"></i></span>
-                                        </a>
-                                        <a class="right carousel-control" href="#pageCarousel" role="button" data-slide="next">
-                                            <span><i class="fa fa-angle-right"></i></span>
-                                        </a>
+                                            }
                                     </div>
+                                    <a class="left carousel-control" href="#pageCarousel" role="button" data-slide="prev">
+                                        <span><i class="fa fa-angle-left"></i></span>
+                                    </a>
+                                    <a class="right carousel-control" href="#pageCarousel" role="button" data-slide="next">
+                                        <span><i class="fa fa-angle-right"></i></span>
+                                    </a>
                                 </div>
-                                }
+                            </div>
                             }
                         }
                     }
+                }
 
-                @if (Model.Content.HasProperty("bodyText") && Model.Content.HasValue("bodyText"))
-                    {
-                    <div class="entry-text">
-                        @Html.Raw(Model.Content.GetPropertyValue("bodyText"))
-                    </div>
-                    }
+            @if (Model.Content.HasProperty("bodyText") && Model.Content.HasValue("bodyText"))
+                {
+                <div class="entry-text">
+                    @Html.Raw(Model.Content.GetPropertyValue("bodyText"))
+                </div>
+                }
 
-            </div>
         </div>
-
 }

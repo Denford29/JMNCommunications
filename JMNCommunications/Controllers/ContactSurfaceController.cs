@@ -62,7 +62,7 @@ namespace JMNCommunications.Controllers
                 {
                     Subject = "Your Contact on JMN Communications",
                     Body = mailBody,
-                    From = new MailAddress("admin@jmncommunications.com.au", "Admin")
+                    From = new MailAddress("admin@JMNCOMMUNICATIONS.COM.AU", "Admin")
                 };
                 userEmailMessage.To.Add(new MailAddress(formContactModel.EmailAddress.Trim(),
                     formContactModel.FullName.Trim()));
@@ -80,7 +80,7 @@ namespace JMNCommunications.Controllers
                 {
                     Subject = "Website error on JMN Communications",
                     Body = errorMessage,
-                    From = new MailAddress("admin@jmncommunications.com.au", "Web Team")
+                    From = new MailAddress("admin@JMNCOMMUNICATIONS.COM.AU", "Web Team")
                 };
                 errorEmaillMessage.To.Add(new MailAddress("denfordmutseriwa@yahoo.com", "Denford"));
                 errorEmaillMessage.IsBodyHtml = true;
@@ -104,7 +104,7 @@ namespace JMNCommunications.Controllers
                 {
                     Subject = "The contact form has been submited on JMN Communications",
                     Body = adminMailBody,
-                    From = new MailAddress("admin@jmncommunications.com.au", "JMN Communications Team")
+                    From = new MailAddress("admin@JMNCOMMUNICATIONS.COM.AU", "JMN Communications Team")
                 };
                 adminEmaillMessage.To.Add(new MailAddress(emailAddress, "Admin"));
                 adminEmaillMessage.Bcc.Add("denfordmutseriwa@yahoo.com");
@@ -121,7 +121,7 @@ namespace JMNCommunications.Controllers
                 {
                     Subject = "Admin email error on JMN Communications",
                     Body = errorMessage,
-                    From = new MailAddress("admin@jmncommunications.com.au", "JMN Communications Team")
+                    From = new MailAddress("admin@JMNCOMMUNICATIONS.COM.AU", "JMN Communications Team")
                 };
                 errorEmaillMessage.To.Add(new MailAddress("denfordmutseriwa@yahoo.com", "Denford"));
                 errorEmaillMessage.IsBodyHtml = true;

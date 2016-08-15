@@ -159,6 +159,7 @@ h2.pageHeading span.headingText {
     -o-transition: all 0.3s ease-in-out;
     -ms-transition: all 0.3s ease-in-out;
     transition: all 0.3s ease-in-out;
+    white-space: normal;
 }
 
 .btn:hover, .btn:focus {
@@ -1220,11 +1221,11 @@ input[type="color"],
 }
 
 .inner-page-content {
-    padding-top: 80px;
+    padding-top: 40px;
 }
 /******************************blog entry and sidebar***************/
 .entry {
-    margin-bottom: 80px;
+    margin-bottom: 40px;
     border-bottom: 2px solid #F5F5F5;
 }
 
