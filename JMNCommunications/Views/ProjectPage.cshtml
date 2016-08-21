@@ -2,20 +2,99 @@
 @{
     Layout = "SiteMaster.cshtml";
 
-    <section class="inner-page-content">
-        <div class="container">
-            <div class="row">
+    bool hasCompanyDetails = Model.Content.HasProperty("companyName") && Model.Content.HasValue("companyName") &&
+        Model.Content.HasProperty("projectDescription") && Model.Content.HasValue("projectDescription");
 
-                <div class="col-md-9 col-sm-12">
-                    @Html.Partial("Master/PageMainArea")
+        <section class="inner-page-content">
+            <div class="container">
+                <div class="row">
+
+                    <div class="col-md-9 col-sm-12">
+                        @Html.Partial("Master/PageMainArea")
+
+                        @if (hasCompanyDetails)
+                            {
+                            var companyName = Model.Content.Name;
+                            if (Model.Content.HasProperty("companyName") && Model.Content.HasValue("companyName"))
+                                {
+                                companyName = Model.Content.GetPropertyValue<string>("companyName");
+                                }
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="row project-detail">
+                                        <div class="col-sm-3">
+                                            <h4>
+                                                Information
+                                            </h4>
+
+                                            <p>
+                                                <span class="colored-text">CLIENT:</span> <br>
+                                                @companyName
+                                            </p>
+
+                                            @if (Model.Content.HasProperty("projectDate") && Model.Content.HasValue("projectDate"))
+                                                {
+                                                var projectDate = Model.Content.GetPropertyValue<DateTime>("projectDate");
+                                                if (projectDate != DateTime.MaxValue)
+                                                    {
+                                                    <p>
+                                                        <span class="colored-text">Date:</span> <br>
+                                                        @projectDate.Month @projectDate.Year
+                                                    </p>
+                                                    }
+                                                }
+                                        </div>
+
+                                        @if (Model.Content.HasProperty("servicesOffered") && Model.Content.HasValue("servicesOffered"))
+                                            {
+                                            var services = Model.Content.GetPropertyValue<string[]>("servicesOffered");
+                                            if (services != null && services.Any())
+                                                {
+                                                <div class="col-sm-3">
+                                                    <h4>services offer</h4>
+                                                    <p>
+                                                        @foreach (var serviceOffered in services)
+                                                            {
+                                                            @serviceOffered<text> , </text>
+                                                            }
+                                                    </p>
+                                                </div>
+                                                }
+                                            }
+
+                                        @if (Model.Content.HasProperty("projectDescription") && Model.Content.HasValue("projectDescription"))
+                                            {
+                                            var projectDescription = Model.Content.GetPropertyValue<string>("projectDescription");
+                                            <div class="col-sm-6">
+                                                <h4>Description</h4>
+                                                <p>
+                                                    @Html.Raw(projectDescription)
+                                                </p>
+                                                @if (Model.Content.HasProperty("companyWebsite") && Model.Content.HasValue("companyWebsite"))
+                                                    {
+                                                    var companyWebsite = Model.Content.GetPropertyValue<string>("companyWebsite");
+                                                    <span class="read-more">
+                                                        <a href="@companyWebsite" class="btn btn-lg btn-theme-bg" target="_blank">
+                                                            Visit Project
+                                                        </a>
+                                                    </span>
+                                                    }
+                                            </div>
+                                            }
+                                    </div>
+                                </div>
+
+                            </div>
+                            }
+
+                    </div>
+
+                    <div class="col-sm-3 hidden-sm hidden-xs">
+                        @Html.Partial("Master/PageSideArea")
+                    </div>
+
                 </div>
-
-                <div class="col-sm-3 hidden-sm hidden-xs">
-                    @Html.Partial("Master/PageSideArea")
-                </div>
-
             </div>
-        </div>
-    </section>
-    
+        </section>
+
 }

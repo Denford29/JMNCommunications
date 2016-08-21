@@ -1,0 +1,68 @@
+﻿@inherits UmbracoTemplatePage
+@{
+
+    var projectPages = Model.Content.Descendants("projectPage").Where(projectPage => projectPage.IsVisible()).ToList();
+    if (projectPages.Any())
+        {
+        <div id="grid" class="row">
+            @foreach (var projectPagesRow in projectPages.InGroupsOf(3))
+                {
+                <div class="row">
+                    @foreach (var projectPage in projectPagesRow)
+                        {
+                        var projectPageTitle = projectPage.Name;
+                        if (projectPage.HasProperty("linkTittle") && projectPage.HasValue("linkTittle"))
+                            {
+                            projectPageTitle = projectPage.GetPropertyValue("linkTittle").ToString();
+                            }
+                        var listingImageUrl = "/Images/Album-Icon-listing.png";
+                        var fullImageSrc = "";
+                        if (projectPage.HasProperty("pageAlbumImage") && projectPage.HasValue("pageAlbumImage"))
+                            {
+
+                            var umbracoImageAlbum = Umbraco.TypedMedia(projectPage.GetPropertyValue<Int32>("pageAlbumImage"));
+                            if (umbracoImageAlbum != null && umbracoImageAlbum.Id > 0)
+                                {
+                                if (umbracoImageAlbum.ContentType.Alias == "Folder" && umbracoImageAlbum.Children.Any())
+                                    {
+                                    var albumImages = umbracoImageAlbum.Children.Where(image => image.ContentType.Alias == "Image").ToList();
+                                    if (albumImages.Any())
+                                        {
+                                        var firstImage = albumImages.FirstOrDefault();
+                                        fullImageSrc = !string.IsNullOrEmpty(firstImage.GetCropUrl("pageHeading")) ? firstImage.GetCropUrl("pageHeading") : firstImage.GetCropUrl(800, 350);
+                                        listingImageUrl = !string.IsNullOrEmpty(firstImage.GetCropUrl("pageListing")) ? firstImage.GetCropUrl("pageListing") : firstImage.GetCropUrl(300, 175);
+
+                                        }
+                                    }
+                                }
+                            }
+                        <div class="mix col-md-4 col-sm-6 margin-btm-20 mix_all">
+                            <div class="image-area">
+                                <a href="@projectPage.Url" title="@projectPageTitle">
+                                    <img src="@listingImageUrl" class="img-responsive" alt="@projectPageTitle">
+                                </a>
+                                <div class="image-info">
+                                    <div class="image-info-inner">
+                                        @if (!string.IsNullOrWhiteSpace(fullImageSrc))
+                                            {
+                                            <a href="@fullImageSrc" class="popup-img">
+                                                <i class="fa fa-plus"></i>
+                                            </a>
+                                            }
+                                        <a href="@projectPage.Url" title="@projectPageTitle">
+                                            <i class="fa fa-eye"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                                <h4>
+                                    @projectPageTitle
+                                </h4>
+                            </div>
+                        </div>
+                        }
+                </div>
+
+                }
+        </div>
+        }
+}

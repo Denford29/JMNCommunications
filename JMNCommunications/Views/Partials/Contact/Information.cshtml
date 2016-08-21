@@ -19,26 +19,29 @@
                 contactHeading = contactPage.GetPropertyValue("pageHeading").ToString();
                 }
             <section id="contact" class="segment contactArea intro-wrap">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-12 ">
-                            <div class="heading-section">
-                                <div class="main-heading">
-                                    <span>@contactTitle</span>
-                                </div>
-                                <div class="sub-heading">
-                                    <h3 class="sub-title">
-                                        @contactHeading
-                                    </h3>
-                                    @if (contactPage.HasProperty("bodyText") && contactPage.HasValue("bodyText"))
-                                        {
-                                        @Html.Raw(contactPage.GetPropertyValue<string>("bodyText"))
-                                        }
+                @if (Model.Content.ContentType.Alias != "contact")
+                    {
+                    <div class="container contactInfo">
+                        <div class="row">
+                            <div class="col-md-12 ">
+                                <div class="heading-section">
+                                    <div class="main-heading">
+                                        <span>@contactTitle</span>
+                                    </div>
+                                    <div class="sub-heading">
+                                        <h3 class="sub-title">
+                                            @contactHeading
+                                        </h3>
+                                        @if (contactPage.HasProperty("bodyText") && contactPage.HasValue("bodyText"))
+                                            {
+                                            @Html.Raw(contactPage.GetPropertyValue<string>("bodyText"))
+                                            }
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
+                    }
 
                 @if (siteSetting != null && siteSetting.Id > 0 && siteSetting.Descendants("SiteDetails").Any())
                     {
@@ -52,7 +55,7 @@
                         <div class="contct-info parallax">
                             <div class="container">
                                 <div class="row">
-                                    <div class="col-md-7">
+                                    <div class="col-md-7 hidden-sm hidden-xs">
                                         <div class="row">
                                             @if (siteDetailsPage.HasProperty("siteAddress") && siteDetailsPage.HasValue("siteAddress"))
                                                 {
@@ -67,7 +70,8 @@
                                                             <p>
                                                                 @foreach (var addressLine in siteAddressList)
                                                                     {
-                                                                    @addressLine <br />
+                                                                    @addressLine
+                                                                    <br />
                                                                     }
                                                             </p>
                                                         </div>
@@ -88,7 +92,8 @@
                                                             <p>
                                                                 @foreach (var phoneNumber in sitePhoneNumbersList)
                                                                     {
-                                                                    @phoneNumber <br />
+                                                                    @phoneNumber
+                                                                    <br />
                                                                     }
                                                                 @if (siteDetailsPage.HasProperty("siteEmailAddress") && siteDetailsPage.HasValue("siteEmailAddress"))
                                                                     {
@@ -117,7 +122,8 @@
                                                             <p>
                                                                 @foreach (var openingTime in siteOpeningTimesList)
                                                                     {
-                                                                    @openingTime <br />
+                                                                    @openingTime
+                                                                    <br />
                                                                     }
                                                             </p>
                                                         </div>

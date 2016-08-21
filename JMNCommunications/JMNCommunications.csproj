@@ -42,6 +42,10 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>bin\Analytics.dll</HintPath>
     </Reference>
+    <Reference Include="AngularGoogleMaps, Version=2.0.2.40, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\AngularGoogleMaps.dll</HintPath>
+    </Reference>
     <Reference Include="Antlr3.Runtime, Version=3.4.1.9004, Culture=neutral, PublicKeyToken=eb42632606e9261f, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>bin\Antlr3.Runtime.dll</HintPath>
@@ -396,6 +400,23 @@
     <Content Include="App_Plugins\Analytics\lib\momentjs\moment-with-langs.min.js" />
     <Content Include="App_Plugins\Analytics\lib\momentjs\moment.js" />
     <Content Include="App_Plugins\Analytics\lib\momentjs\moment.min.js" />
+    <Content Include="App_Plugins\AngularGoogleMaps\2.0.2\agm.js" />
+    <Content Include="App_Plugins\AngularGoogleMaps\2.0.2\angular-google-maps.2.1.0.js" />
+    <Content Include="App_Plugins\AngularGoogleMaps\2.0.2\angular-google-maps.2.1.0.min.js" />
+    <Content Include="App_Plugins\AngularGoogleMaps\2.0.2\angular-google-maps.2.3.3.js" />
+    <Content Include="App_Plugins\AngularGoogleMaps\2.0.2\angular-google-maps.2.3.3.min.js" />
+    <Content Include="App_Plugins\AngularGoogleMaps\2.0.2\angular-simple-logger.min.js" />
+    <Content Include="App_Plugins\AngularGoogleMaps\2.0.2\config.coordinatesbehavour.html" />
+    <Content Include="App_Plugins\AngularGoogleMaps\2.0.2\config.defaultlocation.html" />
+    <Content Include="App_Plugins\AngularGoogleMaps\2.0.2\config.definition.html" />
+    <Content Include="App_Plugins\AngularGoogleMaps\2.0.2\config.format.html" />
+    <Content Include="App_Plugins\AngularGoogleMaps\2.0.2\config.icon.html" />
+    <Content Include="App_Plugins\AngularGoogleMaps\2.0.2\iconanchorpoint.html" />
+    <Content Include="App_Plugins\AngularGoogleMaps\2.0.2\iconsize.html" />
+    <Content Include="App_Plugins\AngularGoogleMaps\2.0.2\iconurl.html" />
+    <Content Include="App_Plugins\AngularGoogleMaps\2.0.2\underscore-min.js" />
+    <Content Include="App_Plugins\AngularGoogleMaps\2.0.2\view.css" />
+    <Content Include="App_Plugins\AngularGoogleMaps\2.0.2\view.html" />
     <Content Include="App_Plugins\Archetype\assets\logo_50.png" />
     <Content Include="App_Plugins\Archetype\assets\twitter.png" />
     <Content Include="App_Plugins\Archetype\css\archetype.css" />
@@ -559,6 +580,7 @@
     <Content Include="App_Plugins\Optimus\Scripts\underscore.min.js" />
     <Content Include="App_Plugins\Optimus\Services\jqueryFileTree.aspx" />
     <Content Include="bin\Analytics.dll" />
+    <Content Include="bin\AngularGoogleMaps.dll" />
     <Content Include="bin\Antlr3.Runtime.dll" />
     <Content Include="bin\Archetype.dll" />
     <Content Include="bin\BundleTransformer.Core.dll" />
@@ -577,7 +599,10 @@
     <Content Include="bootstrap\js\bootstrap.min.js" />
     <Content Include="bootstrap\js\npm.js" />
     <Content Include="css\animate.css" />
+    <Content Include="css\bootstrap.css" />
+    <Content Include="css\bootstrap.min.css" />
     <Content Include="css\flexslider.css" />
+    <Content Include="css\font-awesome.css" />
     <Content Include="css\magnific-popup.css" />
     <Content Include="css\owl.carousel.css" />
     <Content Include="css\owl.theme.css" />
@@ -585,10 +610,16 @@
     <Content Include="css\YTPlayer.css" />
     <Content Include="fonts\css\font-awesome.css" />
     <Content Include="fonts\css\font-awesome.min.css" />
+    <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="fonts\fonts\fontawesome-webfont.svg" />
     <Content Include="fonts\HELP-US-OUT.txt" />
+    <Content Include="Images\Album-Icon-listing.png" />
     <Content Include="Images\cabling-networking.jpg" />
+    <Content Include="Images\Communication-Technology.jpg" />
     <Content Include="Images\fibre-optic-network.jpg" />
+    <Content Include="Images\Motherboard-Wiring.jpg" />
+    <Content Include="Images\Photo-Album-Icon.png" />
+    <Content Include="Images\Technology-MicroChip.jpg" />
     <Content Include="Index.html" />
     <Content Include="Images\copper_and_fibre_optic.jpg" />
     <Content Include="Images\fibre-optic-cables.jpg" />
@@ -652,8 +683,30 @@
     <Content Include="Media\1004\fibre-optic-network.jpg" />
     <Content Include="Media\1004\fibre-optic-network_big-thumb.jpg" />
     <Content Include="Media\1004\fibre-optic-network_thumb.jpg" />
+    <Content Include="Media\1005\technology-microchip.jpg" />
+    <Content Include="Media\1005\technology-microchip_big-thumb.jpg" />
+    <Content Include="Media\1005\technology-microchip_thumb.jpg" />
+    <Content Include="Media\1006\communication-technology.jpg" />
+    <Content Include="Media\1006\communication-technology_big-thumb.jpg" />
+    <Content Include="Media\1006\communication-technology_thumb.jpg" />
+    <Content Include="Media\1007\motherboard-wiring.jpg" />
+    <Content Include="Media\1007\motherboard-wiring_big-thumb.jpg" />
+    <Content Include="Media\1007\motherboard-wiring_thumb.jpg" />
+    <Content Include="Media\1008\jmn-logo.png" />
+    <Content Include="Media\1008\jmn-logo_big-thumb.jpg" />
+    <Content Include="Media\1008\jmn-logo_big-thumb.png" />
+    <Content Include="Media\1008\jmn-logo_thumb.jpg" />
+    <Content Include="Media\1008\jmn-logo_thumb.png" />
+    <Content Include="Scripts\bootstrap-hover-dropdown.min.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\custom.js" />
+    <Content Include="Scripts\jquery-1.11.1.min.js" />
+    <Content Include="Scripts\jquery.flexslider-min.js" />
+    <Content Include="Scripts\jquery.magnific-popup.min.js" />
+    <Content Include="Scripts\jquery.mixitup.min.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\wow.min.js" />
     <Content Include="Umbraco_Client\App_Plugins\ModelsBuilder\package.manifest" />
     <Content Include="bin\amd64\Microsoft.VC90.CRT\Microsoft.VC90.CRT.manifest" />
     <Content Include="bin\x86\Microsoft.VC90.CRT\Microsoft.VC90.CRT.manifest" />
@@ -888,6 +941,12 @@
     <Content Include="Views\Partials\Master\PageMainArea.cshtml" />
     <Content Include="Views\Partials\Master\PageSideArea.cshtml" />
     <Content Include="Views\Partials\Service\List.cshtml" />
+    <Content Include="Views\Partials\Project\Listing.cshtml" />
+    <Content Include="fonts\fontawesome-webfont.eot" />
+    <Content Include="fonts\fontawesome-webfont.ttf" />
+    <Content Include="fonts\fontawesome-webfont.woff" />
+    <Content Include="fonts\fontawesome-webfont.woff2" />
+    <Content Include="fonts\FontAwesome.otf" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -3451,7 +3510,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="App_Code\" />
     <Folder Include="App_Data\" />
+    <Folder Include="bin\ru-ru\" />
     <Folder Include="Views\MacroPartials\" />
   </ItemGroup>
   <PropertyGroup>

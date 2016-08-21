@@ -270,12 +270,12 @@ namespace Umbraco.Web.PublishedContentModels
 		}
 
 		///<summary>
-		/// Location Map: Set the google maps location to be used by the page.
+		/// Map Location: Set the location to be used on the contact page.
 		///</summary>
-		[ImplementPropertyType("locationMap")]
-		public string LocationMap
+		[ImplementPropertyType("mapLocation")]
+		public AngularGoogleMaps.Model MapLocation
 		{
-			get { return this.GetPropertyValue<string>("locationMap"); }
+			get { return this.GetPropertyValue<AngularGoogleMaps.Model>("mapLocation"); }
 		}
 	}
 
@@ -655,6 +655,51 @@ namespace Umbraco.Web.PublishedContentModels
 		public static PublishedPropertyType GetModelPropertyType<TValue>(Expression<Func<ProjectPage, TValue>> selector)
 		{
 			return PublishedContentModelUtility.GetModelPropertyType(GetModelContentType(), selector);
+		}
+
+		///<summary>
+		/// Company Name
+		///</summary>
+		[ImplementPropertyType("companyName")]
+		public string CompanyName
+		{
+			get { return this.GetPropertyValue<string>("companyName"); }
+		}
+
+		///<summary>
+		/// Company Website
+		///</summary>
+		[ImplementPropertyType("companyWebsite")]
+		public string CompanyWebsite
+		{
+			get { return this.GetPropertyValue<string>("companyWebsite"); }
+		}
+
+		///<summary>
+		/// Project Date
+		///</summary>
+		[ImplementPropertyType("projectDate")]
+		public DateTime ProjectDate
+		{
+			get { return this.GetPropertyValue<DateTime>("projectDate"); }
+		}
+
+		///<summary>
+		/// Project Description
+		///</summary>
+		[ImplementPropertyType("projectDescription")]
+		public string ProjectDescription
+		{
+			get { return this.GetPropertyValue<string>("projectDescription"); }
+		}
+
+		///<summary>
+		/// Services Offered
+		///</summary>
+		[ImplementPropertyType("servicesOffered")]
+		public IEnumerable<string> ServicesOffered
+		{
+			get { return this.GetPropertyValue<IEnumerable<string>>("servicesOffered"); }
 		}
 	}
 

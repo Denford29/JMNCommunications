@@ -29,16 +29,16 @@
 
                 <div class="row">
 
-                    <div class=" col-md-6 ">
+                    <div class="col-md-6 inputContainer">
                         <div class="row control-group">
                             <div class="form-group col-md-12 controls">
-                                @Html.TextBoxFor(model => model.FullName, new {@class = "form-control", required = "", placeholder = "Full Name"})
-                                @Html.ValidationMessageFor(model => model.FullName, "", new {@class = "help-block text-danger"})
+                                @Html.TextBoxFor(model => model.FullName, new { @class = "form-control", required = "", placeholder = "Full Name" })
+                                @Html.ValidationMessageFor(model => model.FullName, "", new { @class = "help-block text-danger" })
                             </div>
                         </div>
                     </div>
 
-                    <div class=" col-md-6">
+                    <div class="col-md-6 inputContainer">
                         <div class="row control-group">
                             <div class="form-group col-md-12 controls">
                                 @Html.TextBoxFor(model => model.PhoneNumber, new {@class = "form-control", required = "", placeholder = "Phone Number"})
