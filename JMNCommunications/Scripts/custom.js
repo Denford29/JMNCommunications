@@ -1,7 +1,4 @@
-/*Priject    : Piple
- * Author  : Piple
- * 
- */
+
 //transperent nav
 // Sticky header style change on sroll
 $(window).scroll(function() {
@@ -11,8 +8,6 @@ $(window).scroll(function() {
         $("header").removeClass("stuck");
     }
 });
-
-
 
 /*=========================*/
 /*========on hover dropdown navigation====*/
@@ -31,7 +26,7 @@ $(document).ready(function() {
  =============================================== */
 $(window).load(function() {
     $(".main-flex-slider").flexslider({
-        slideshowSpeed: 2000,
+        slideshowSpeed: 4000,
         directionNav: false,
         animation: "fade",
         controlNav: false,

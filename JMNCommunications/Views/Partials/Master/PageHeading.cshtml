@@ -34,7 +34,7 @@
                                     {
                                     <div class="main-flex-slider">
                                         <ul class="slides">
-                                            @foreach (var headerText in headerTextList)
+                                            @foreach (var headerText in headerTextList.Where(text => !string.IsNullOrWhiteSpace(text)))
                                                 {
                                                 if (headerText != null)
                                                     {

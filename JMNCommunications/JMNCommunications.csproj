@@ -613,6 +613,7 @@
     <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="fonts\fonts\fontawesome-webfont.svg" />
     <Content Include="fonts\HELP-US-OUT.txt" />
+    <Content Include="google580741c516edc2bf.html" />
     <Content Include="Images\Album-Icon-listing.png" />
     <Content Include="Images\cabling-networking.jpg" />
     <Content Include="Images\Communication-Technology.jpg" />
@@ -697,6 +698,7 @@
     <Content Include="Media\1008\jmn-logo_big-thumb.png" />
     <Content Include="Media\1008\jmn-logo_thumb.jpg" />
     <Content Include="Media\1008\jmn-logo_thumb.png" />
+    <Content Include="robots.txt" />
     <Content Include="Scripts\bootstrap-hover-dropdown.min.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\custom.js" />
@@ -947,6 +949,7 @@
     <Content Include="fonts\fontawesome-webfont.woff" />
     <Content Include="fonts\fontawesome-webfont.woff2" />
     <Content Include="fonts\FontAwesome.otf" />
+    <Content Include="Views\sitemap.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
