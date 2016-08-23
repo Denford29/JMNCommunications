@@ -617,6 +617,8 @@
     <Content Include="Images\Album-Icon-listing.png" />
     <Content Include="Images\cabling-networking.jpg" />
     <Content Include="Images\Communication-Technology.jpg" />
+    <Content Include="Images\favicon.ico" />
+    <Content Include="Images\FavIconImage.png" />
     <Content Include="Images\fibre-optic-network.jpg" />
     <Content Include="Images\Motherboard-Wiring.jpg" />
     <Content Include="Images\Photo-Album-Icon.png" />
